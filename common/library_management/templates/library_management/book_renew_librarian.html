@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <h1>Продлить аренду книги, {{ book_instance.book.title }}</h1>
+      <form action="" method="post">
+      {% csrf_token %}
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ form.renewal_date.label_tag }}
+            {{ form.renewal_date }}
+            <br>
+            <input type="submit" value="Продлить">
+        </form>
+    </form>
+    </div>
+</div>
+ 
+{% endblock %}

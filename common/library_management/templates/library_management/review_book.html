@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1>Оставить отзыв на книгу, {{ book.title }}</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="six columns">
+        <label>Ваше сообщение:</label>
+        {{form.review}}
+        <input type="submit" value="Отправить">
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

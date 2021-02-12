@@ -1,0 +1,45 @@
+body, h1, h2, h3, h4, p, a {
+  margin: 0;
+  font-size: 100%;
+  font-weight: normal;
+}
+
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+
+
+.content {
+  font-size: 0;
+  width: 790px;
+  margin: 100px auto 50px auto;
+}
+
+.card {
+  width: 350px;
+  margin-bottom: 60px;
+  padding: 45px 45px 70px 45px;
+  display: inline-block;
+  margin-right: 90px;
+  box-shadow: 4px 4px 5px rgba(250, 50, 50, .4);
+}
+.no-right-margin {
+  margin-right: 0;
+}
+
+.card-title {
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+
+.book-image {
+  width: 100%;
+  margin-bottom: 25px;
+}
+

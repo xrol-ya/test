@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1>Главная страница</h1>
+  <ul>
+    <li><b>Книг в наличии:</b> {{ num_books }}</li>
+    <li><b>Книги на руках:</b> {{ num_instances }}</li>
+    <li><b>Прочитанных книг:</b> {{ num_instances_available }}</li>
+    <li><b>Авторов:</b> {{ num_authors }}</li>
+  </ul>
+  <div class="row">
+  </div>
+</div>
+{% endblock %}

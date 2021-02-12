@@ -1,0 +1,52 @@
+/** HEADER **/
+
+.header {
+position: relative;
+width: 100%;
+align: center;
+height: 90px;
+background: black;
+}
+
+
+.header li {
+    display: inline-block;
+    margin-left: 20px;
+    align: center;
+    margin-top: 25px;
+
+}
+
+.header .mainimg {
+    position: absolute;
+    height: 90px;
+}
+
+
+.header li:hover {
+  transition: all 500ms ease-in-out;
+}
+
+.header a {
+    color: white;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+.header a:hover{
+    color: #7fff00;
+    transition: 0.4s linear;
+}
+/** BODY **/
+a { text-decoration: none}
+
+
+
+/** FOOTER **/
+/** * **/
+
+* {
+font-size: 20px;
+}
+
