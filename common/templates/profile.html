@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    {% if user.is_authenticated %}
+    <h1>Профиль пользователя, {{ user.username }}</h1>
+    <div class="row">
+        <div class="two columns">Username: </div>
+        <div class="ten columns">{{ user.username }}</div>
+    </div>
+    <div class="row">
+        <div class="two columns">Имя: </div>
+        <div class="ten columns">{{ user.first_name }}</div>
+    </div>
+    <div class="row">
+        <div class="two columns">Фамилия: </div>
+        <div class="ten columns">{{ user.last_name }}</div>
+    </div>
+    <div class="row">
+        <div class="two columns">Email: </div>
+        <div class="ten columns">{{ user.email }}</div>
+    </div>
+    {% endif %}
+</div>
+
+<div class="container" style="margin-top: 20px;">
+    {% if bookinstance %}
+    <h2>Арендованные книги</h2>
+    <ul>
+    {% for borrowed in borrowedbefore %}
+        {% if borrowed.borrower == user %}
+        <li>{{ borrowed.book.title }} (Returned)</li>
+        {% endif %}
+    {% endfor %}
+
+    {% for bookinst in bookinstance %}
+        {% if bookinst.borrower == user %}
+        <li class="{% if bookinst.is_overdue %}text-danger{% endif %}">
+            <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a> Дата возврата: ({{ bookinst.due_back }})
+            {% if perms.catalog.can_mark_returned %}
+                <a href="{% url 'renew-book-librarian' bookinst.id %}">Продлить аренду</a>
+            {% endif %}
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>Вы еще ни разу не брали книгу</p>
+    {% endif %}
+</div>
+
+<div class="container" style="margin-top: 20px;">
+    <h2>Отзывы на книги</h2>
+    {% for b in booksreviewed %}
+        {%  for r in b.reviews.all %}
+            {% if r.reviewer == user %}
+            <div class="row">
+                <div class="two columns">Книга: {{ b.title }}</div>
+                <div class="ten columns">Отзыв: {{ r.review }}</div>
+            </div>
+            {% endif %}
+        {%  endfor %}
+    {% endfor %}
+</div>
+{% endblock %}

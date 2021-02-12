@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="six columns">
+      <h2>Авторизоваться</h2>
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        <br>
+        {{ form.password.label_tag }}
+        {{ form.password }}
+        <br>
+        <input type="hidden" name="next" value="{{ next }}">
+        <input type="submit" value="Войти"> ИЛИ <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+      </form>
+    </div>
+
+    <div class="six columns">
+      <h2>Зарегистрироваться</h2>
+      <form method="post" action="{% url 'auth-login' %}">
+        {% csrf_token %}
+        {#{{ form.username.errors }}#}
+        {{ signupform.username.label_tag }}
+        {{ signupform.username }}
+
+        {{ signupform.first_name.label_tag }}
+        {{ signupform.first_name }}
+
+        {{ signupform.last_name.label_tag }}
+        {{ signupform.last_name }}
+
+        {{ signupform.password.label_tag }}
+        {{ signupform.password }}
+
+        {{ signupform.confirm_password.label_tag }}
+        {{ signupform.confirm_password }}
+
+        {{ signupform.email.label_tag }}
+        {{ signupform.email }}
+
+        <br>
+        <input type="submit" class="button" name='sign-up' value="Регистрация">
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+

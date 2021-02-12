@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{
+{% block content %}
+<div class="container">
+  <h1>{{ book.title }}, <a href="{% url 'book-review' book.id %}" style="font-size:16px;">оставить отзыв</a></h1>
+  <div class="row">
+    <div class="five columns">
+      <img src="{% static 'images/no-image.jpg' %}">
+    </div>
+    <div class="seven columns">
+      <p><b>Автор:</b><br>{{ book.author }}</p>
+      <p><b>Описание:</b><br>{{ book.summary }}</p>
+      <p><b>ISBN:</b><br>{{ book.isbn }}</p>
+      <p><b>Жанр:</b><br>{{ book.genre.all|join:", " }}</p> <br>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <h2>Отзывы</h2>
+    {% for b in book.reviews.all %}
+      <p>Пользователь: {{ b.reviewer }}<br>{{ b.review }}</p>
+      <br>
+    {% endfor %}
+  </div>
+
+  <div class="row">
+    <h2>Книги на руках</h2>
+    {% for copy in book.bookinstance_set.all %}
+    <p>Статус: {{ copy.get_status_display }}</p>
+    {% if copy.status != 'a' %}
+      <p><strong>Должна быть возвращена:</strong> {{ copy.due_back }}</p>
+    {% else %}
+      <p><a href="{% url 'borrow' copy.id %}">Зарезервировать</a></p>
+    {% endif %}
+      <p class="text-muted"><strong>ID:</strong> {{ copy.id }}</p>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

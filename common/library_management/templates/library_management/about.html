@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>О проекте</h1>
+    <div class="row">
+        <div class="five columns">
+            <img src="{% static 'images/no-image.jpg' %}" width="400">
+        </div>
+        <div class="seven columns">
+            <h3>Привет, меня зовут Ярослав Никифоров</h3>
+            <p>
+                Я разработчик данного проекта
+                ...
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
